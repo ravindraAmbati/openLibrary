@@ -16,7 +16,8 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.HashSet;
 import java.util.StringJoiner;
-import java.util.stream.Collectors;
+
+//todo: enable swagger-ui
 
 @Log4j2
 @RestController
@@ -65,7 +66,7 @@ public class ReadTrendingDataController {
     private String getBookDetails(JsonNode bookJsonNode) {
         StringJoiner commaStrJoiner = new StringJoiner(",");
         String title = String.valueOf(bookJsonNode.get("title"));
-        commaStrJoiner.add(title.replaceAll(",",""));
+        commaStrJoiner.add(title.replaceAll(",", ""));
         String authors = getAuthors(bookJsonNode, title);
         commaStrJoiner.add(authors);
         String availabilityStatus = getAvailabilityStatus(bookJsonNode);
@@ -80,7 +81,7 @@ public class ReadTrendingDataController {
         if (null != availabilityJsonNode) {
             availabilityStatus = String.valueOf(availabilityJsonNode.get("status"));
         }
-        return availabilityStatus.replaceAll(",","");
+        return availabilityStatus.replaceAll(",", "");
     }
 
     private String getAuthors(JsonNode bookJsonNode, String title) {
@@ -91,7 +92,7 @@ public class ReadTrendingDataController {
                 int authorNum = -1;
                 JsonNode author;
                 while (null != (author = authorsJsonNode.get(++authorNum))) {
-                    authors.add(String.valueOf(author).replaceAll(",",""));
+                    authors.add(String.valueOf(author).replaceAll(",", ""));
                 }
                 log.info("authors size: {} for the title: {}", authors.size(), title);
             }
