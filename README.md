@@ -24,7 +24,7 @@ http://localhost:8080/trending/monthly
 to get this year trending book details
 http://localhost:8080/trending/yearly
 
-to get all time trending book details  
+to get all time trending book details
 http://localhost:8080/trending/forever
 
 stores json and csv files in temp folder of the system 
